@@ -7,20 +7,39 @@ function Home() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+ addEventListener
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+//Request send to server
 
-    function handleLogin() {
-        if (
-            email === "admin@gmail.com" &&
-            password === "admin123"
-        ) {
+async function handleLogin(e) {
+    e.preventDefault();
+
+    try {
+        const response = await fetch("http://localhost:1000/admin/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
             navigate("/dashboard");
         } else {
-            alert("Invalid Email or Password");
+            alert(data.message || "Invalid Email or Password");
         }
-    }
 
+    } catch (error) {
+        console.error("Login Error:", error);
+        alert("Server se connection nahi ho raha");
+    }
+}
 
     return (
 

@@ -11,7 +11,7 @@ header {
   background: rgba(255, 255, 255, 0.7);
   padding: 10px 20px;
 
-  backdrop-filter: blur(12px);
+  /* backdrop-filter: blur(12px); */
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 
