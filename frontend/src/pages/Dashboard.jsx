@@ -1,8 +1,29 @@
+import "./Dashboard.css"
 function Dashboard() {
+
     return (
         <>
-            <h1>Admin Dashboard</h1>
-            <p>This is a simple dashboard</p>
+
+            {/* Header */}
+
+            <header>
+                <div className="header">
+                    <img src="/ssismlogo.png" alt="ssismlogo" />
+                    <h1>SANT SINGAJI EDUCATIONAL SOCIETY</h1>
+                    <h1></h1>
+                </div>
+            </header>
+
+            {/* Main */}
+            
+            <main>
+
+                <section className="HLT">
+                    
+                </section>
+            </main>
+
+            
         </>
     );
 }
