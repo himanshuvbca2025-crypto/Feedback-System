@@ -30,7 +30,7 @@ async function handleLogin(e) {
         const data = await response.json();
 
         if (response.ok) {
-            navigate("/dashboard");
+            navigate("./Dashboard.jsx");
         } else {
             alert(data.message || "Invalid Email or Password");
         }
