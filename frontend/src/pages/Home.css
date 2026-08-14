@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    background: #f8fafc;
+    font-family: Arial, sans-serif;
+    color: #26334d;
+}
+
+/* ================= Header ================= */
+
+header {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px 20px;
+
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+    box-shadow: 0 4px 20px rgba(30, 50, 90, 0.06);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+header h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+/* ================= Main & Container ================= */
+
+main {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: radial-gradient(circle at 10% 20%, rgba(120, 160, 255, 0.12), transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(120, 220, 190, 0.12), transparent 40%),
+        #f8fafc;
+}
+
+.Container,
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 40px rgba(38, 51, 77, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.Container h1,
+.container h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-top: 0;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+}
+
+.Container input[type="text"],
+.container input[type="text"],
+#Mail {
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #1e293b;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    outline: none;
+}
+
+.Container input[type="text"]:focus,
+.container input[type="text"]:focus,
+#Mail:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.Container button,
+.container button {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    transition: all 0.25s ease;
+}
+
+.Container button:hover,
+.container button:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+.Container button:active,
+.container button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+}

@@ -1,39 +1,29 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 import "./App.css";
 
 function App() {
   return (
-    <>
-      {/* Header */}
-      <header>
-        <div className="header-content">
-          <img src="/ssismlogo.png" alt="SSISM Logo" />
+    <BrowserRouter>
+      <Routes>
 
-          <h1>SANT SINGAJI EDUCATIONAL SOCIETY</h1>
+        <Route path="/" element={<Home />} />
 
-          <img src="/ssec.png" alt="SSEC Logo" />
-        </div>
-      </header>
+        <Route path="/dashboard" element={<Dashboard />} />
 
-      {/* Main Section */}
-      <main>
-        <section className="role-box">
-          <div className="welcome-icon">👥</div>
+      </Routes>
+    </BrowserRouter>
 
-          <h2>Welcome!</h2>
-
-          <section>
-            <button className="admin-btn">
-              <span className="admin-icon">👤</span>
-
-              <span>Admins</span>
-
-              <b>›</b>
-            </button>
-          </section>
-        </section>
-      </main>
-    </>
-  );
+  )
 }
 
+
+
 export default App;
+
+
+
+// cd ~/feedback-system/frontend
+// npm run dev
