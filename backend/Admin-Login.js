@@ -23,6 +23,13 @@ System.post("/admin/login",async(req,res)=>{
     
     const {gmail,password}=req.body;
 
+     if (!gmail || !password) {
+            return res.status(400).json({
+                message: "Gmail and Password are required"
+            });
+        }
+        
+
     const result=await cl.findOne({
         gmail:gmail,
     });
