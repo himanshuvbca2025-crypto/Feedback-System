@@ -18,9 +18,7 @@ const cl=db.collection("Admin");
 System.post("/admin/login",async(req,res)=>{
 
  try {
-        
-    console.log("Request Received");
-    
+            
     const {gmail,password}=req.body;
 
      if (!gmail || !password) {
@@ -33,6 +31,7 @@ System.post("/admin/login",async(req,res)=>{
     const result=await cl.findOne({
         gmail:gmail,
     });
+
 
     if(!result){
        return res.status(401).json({

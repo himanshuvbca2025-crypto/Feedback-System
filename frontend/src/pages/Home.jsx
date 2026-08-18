@@ -1,10 +1,14 @@
+/* eslint-disable no-empty */
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 function Home() {
-    const [email, setEmail] = useState("");
+    const [gmail, setgmail] = useState("");
     const [password, setPassword] = useState("");
+    
+    
 
     const navigate = useNavigate();
 
@@ -19,7 +23,7 @@ function Home() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    email,
+                    gmail,
                     password
                 })
             });
@@ -30,12 +34,20 @@ function Home() {
                 navigate("/dashboard");
                 return;
             }
+            else {
+                alert(data.message);
+            }
+            
+
+            
         } catch (error) {
             console.error("Login Error:", error);
         }
 
         // Direct navigation for frontend preview
-        navigate("/dashboard");
+
+        
+       
     }
 
     return (
@@ -74,8 +86,8 @@ function Home() {
                                     type="text"
                                     id="Mail"
                                     placeholder="Enter Admin Mail"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={gmail}
+                                    onChange={(e) => setgmail(e.target.value)}
                                 />
                             </div>
 
