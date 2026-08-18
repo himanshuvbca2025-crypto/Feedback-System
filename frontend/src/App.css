@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  background: #f8fafc;
   font-family: Arial, sans-serif;
   color: #26334d;
 }
@@ -49,17 +48,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background:
-    radial-gradient(circle at 10% 20%,
-      rgba(120, 160, 255, 0.15),
-      transparent 30%),
-    radial-gradient(circle at 90% 80%,
-      rgba(120, 220, 190, 0.15),
-      transparent 30%),
-    linear-gradient(135deg,
-      #f8f9ff,
-      #eef3ff);
 
   padding: 50px 20px;
 }
