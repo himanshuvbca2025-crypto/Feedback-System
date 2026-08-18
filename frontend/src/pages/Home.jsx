@@ -4,7 +4,7 @@ import "./Home.css";
 
 function Home() {
 
-    const [email, setEmail] = useState("");
+    const [gmail, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
  addEventListener
@@ -22,7 +22,7 @@ async function handleLogin(e) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                email,
+                gmail,
                 password
             })
         });
@@ -37,7 +37,7 @@ async function handleLogin(e) {
 
     } catch (error) {
         console.error("Login Error:", error);
-        alert("Server se connection nahi ho raha");
+        alert("Server Error");
     }
 }
 
@@ -68,7 +68,7 @@ async function handleLogin(e) {
                     <input type="text"
                         id="Mail"
                         placeholder="Enter Admin Mail"
-                        value={email}
+                        value={gmail}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     < br />
