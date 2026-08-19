@@ -2,17 +2,20 @@ import express from "express";
 import cors from "cors"
 import { MongoClient } from "mongodb";
 import bcrybt from "bcrypt";
+import dotenv from "dotenv";
+dotenv.config();
 
 const System = express();
 
 System.use(cors());
 System.use(express.json());
 
-const client=new MongoClient("mongodb://127.0.0.1:27017");
+
+const client=new MongoClient(process.env.DB_URL);
 await client.connect();
 
-const db=client.db("FeedBack_System");
-const cl=db.collection("Admin");
+const db=client.db(process.env.DB_NAME);
+const cl=db.collection(process.env.DB_Collection);
 
 
 System.post("/admin/login",async(req,res)=>{
@@ -42,7 +45,8 @@ System.post("/admin/login",async(req,res)=>{
 
     if(isMatch){
         res.status(200).json({
-            message:"Login Successfully"
+            message:"Login Successfully",
+            
         });
     }
     else{
