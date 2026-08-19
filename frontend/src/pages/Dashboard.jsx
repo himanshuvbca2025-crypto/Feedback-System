@@ -167,6 +167,11 @@ function Dashboard() {
         setOpenLecture(openLecture === id ? null : id);
     };
 
+    const handleGroupClick = (groupName) => {
+        console.log(`${groupName} card clicked`);
+        alert(`${groupName} clicked!`);
+    };
+
     return (
         <div className="dashboard-page">
 
@@ -304,7 +309,7 @@ function Dashboard() {
                     className={activeTab === "daily" ? "active" : ""}
                     onClick={() => setActiveTab("daily")}
                 >
-                    Daily Lecture Feed
+                    Class & Department
 
                     <span>24</span>
                 </button>
@@ -313,15 +318,10 @@ function Dashboard() {
                     className={activeTab === "faculty" ? "active" : ""}
                     onClick={() => setActiveTab("faculty")}
                 >
-                    Faculty Performance
+                    Daily Feedback
                 </button>
 
-                <button
-                    className={activeTab === "class" ? "active" : ""}
-                    onClick={() => setActiveTab("class")}
-                >
-                    Class & Department
-                </button>
+
 
             </div>
 
@@ -352,6 +352,68 @@ function Dashboard() {
                                 </p>
                             </div>
 
+
+                            {/* <select>
+                                <option>All Departments</option>
+                                <option>Computer Science</option>
+                                <option>Commerce</option>
+                                <option>Management</option>
+                            </select> */}
+
+                        </div>
+
+
+                        <div className="group-grid">
+                            <div className="group-card" onClick={() => handleGroupClick("ITEG")}>
+                                <div className="group-logo-wrapper">
+                                    <img src="/iteg.png" alt="ITEG Logo" />
+                                </div>
+                                <h3>ITEG</h3>
+                            </div>
+                            <div className="group-card" onClick={() => handleGroupClick("MEG")}>
+                                <div className="group-logo-wrapper">
+                                    <img src="/meg.png" alt="MEG Logo" />
+                                </div>
+                                <h3>MEG</h3>
+                            </div>
+                            <div className="group-card" onClick={() => handleGroupClick("BEG")}>
+                                <div className="group-logo-wrapper">
+                                    <img src="/beg.png" alt="BEG Logo" />
+                                </div>
+                                <h3>BEG</h3>
+                            </div>
+                            <div className="group-card" onClick={() => handleGroupClick("B.Tech")}>
+                                <div className="group-logo-wrapper">
+                                    <img src="/ssec.png" alt="B.Tech Logo" />
+                                </div>
+                                <h3>B.Tech</h3>
+                            </div>
+                        </div>
+
+                    </section>
+
+                )}
+
+
+                {/* =================================================
+                    DAILY FEEDBACK / LECTURE FEED (MATRIX)
+                ================================================= */}
+
+                {activeTab === "faculty" && (
+
+                    <section>
+
+                        <div className="dashboard-section-heading">
+
+                            <div>
+                                <h2>
+                                    Today's Lectures & Student Responses
+                                </h2>
+
+                                <p>
+                                    Lecture-wise feedback and performance matrix
+                                </p>
+                            </div>
 
                             <select>
                                 <option>All Departments</option>
@@ -405,24 +467,11 @@ function Dashboard() {
                                                         {lecture.className}
                                                     </span>
 
-                                                    <small>
-                                                        {lecture.time}
-                                                    </small>
-
                                                 </div>
 
-
                                                 <h3>
-                                                    {lecture.subject}
+                                                    {lecture.faculty}
                                                 </h3>
-
-
-                                                <p>
-                                                    Faculty:
-                                                    <b>
-                                                        {lecture.faculty}
-                                                    </b>
-                                                </p>
 
                                             </div>
 
@@ -463,7 +512,7 @@ function Dashboard() {
                                     </div>
 
 
-                                    {/* EXPANDED */}
+                                    {/* EXPANDED FEEDBACK MATRIX */}
 
                                     {openLecture === lecture.id && (
 
@@ -561,254 +610,6 @@ function Dashboard() {
                                 </div>
 
                             ))}
-
-                        </div>
-
-                    </section>
-
-                )}
-
-
-                {/* =================================================
-                    FACULTY
-                ================================================= */}
-
-                {activeTab === "faculty" && (
-
-                    <section>
-
-                        <div className="dashboard-section-heading">
-
-                            <div>
-                                <h2>
-                                    Faculty Performance
-                                </h2>
-
-                                <p>
-                                    Individual faculty feedback
-                                    performance
-                                </p>
-                            </div>
-
-                        </div>
-
-
-                        <div className="faculty-container">
-
-                            {faculty.map((teacher, index) => (
-
-                                <div
-                                    className="faculty-card"
-                                    key={index}
-                                >
-
-                                    <div className="faculty-profile">
-
-                                        <div className="faculty-avatar">
-                                            {teacher.initials}
-                                        </div>
-
-                                        <h3>
-                                            {teacher.name}
-                                        </h3>
-
-                                        <p>
-                                            Faculty •{" "}
-                                            {teacher.department}
-                                        </p>
-
-
-                                        <div className="faculty-stats">
-
-                                            <div>
-                                                <span>
-                                                    Overall Score
-                                                </span>
-
-                                                <strong>
-                                                    {teacher.score} / 5
-                                                </strong>
-                                            </div>
-
-                                            <div>
-                                                <span>
-                                                    Lectures Evaluated
-                                                </span>
-
-                                                <strong>
-                                                    {teacher.lectures}
-                                                </strong>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <div className="faculty-matrix">
-
-                                        <h4>
-                                            Feedback Matrix
-                                        </h4>
-
-                                        {teacher.metrics.map(
-                                            ([name, score], index) => (
-
-                                                <div
-                                                    className="faculty-metric"
-                                                    key={index}
-                                                >
-
-                                                    <div>
-
-                                                        <span>
-                                                            {name}
-                                                        </span>
-
-                                                        <b>
-                                                            {score}
-                                                        </b>
-
-                                                    </div>
-
-
-                                                    <div className="matrix-progress">
-
-                                                        <div
-                                                            style={{
-                                                                width: `${(
-                                                                    score /
-                                                                    5
-                                                                ) * 100}%`,
-                                                            }}
-                                                        ></div>
-
-                                                    </div>
-
-                                                </div>
-
-                                            )
-                                        )}
-
-                                    </div>
-
-                                </div>
-
-                            ))}
-
-                        </div>
-
-                    </section>
-
-                )}
-
-
-                {/* =================================================
-                    CLASS REPORT
-                ================================================= */}
-
-                {activeTab === "class" && (
-
-                    <section>
-
-                        <div className="dashboard-section-heading">
-
-                            <div>
-                                <h2>
-                                    Class & Department Reports
-                                </h2>
-
-                                <p>
-                                    Class-wise aggregated feedback
-                                    performance
-                                </p>
-                            </div>
-
-                        </div>
-
-
-                        <div className="class-table-wrapper">
-
-                            <table>
-
-                                <thead>
-
-                                    <tr>
-                                        <th>Class / Semester</th>
-                                        <th>Lectures</th>
-                                        <th>Feedback</th>
-                                        <th>Avg Rating</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-
-                                </thead>
-
-
-                                <tbody>
-
-                                    {classes.map((item, index) => (
-
-                                        <tr key={index}>
-
-                                            <td>
-                                                <strong>
-                                                    {item.name}
-                                                </strong>
-                                            </td>
-
-                                            <td>
-                                                {item.lectures} Today
-                                            </td>
-
-                                            <td>
-                                                <span className="feedback-value">
-                                                    {item.feedback}%
-                                                </span>
-                                            </td>
-
-                                            <td>
-
-                                                <strong
-                                                    className={
-                                                        item.rating < 3.5
-                                                            ? "table-danger"
-                                                            : "table-success"
-                                                    }
-                                                >
-                                                    {item.rating} / 5
-                                                </strong>
-
-                                            </td>
-
-                                            <td>
-
-                                                <span
-                                                    className={`class-status ${item.rating < 3.5
-                                                            ? "review"
-                                                            : "optimal"
-                                                        }`}
-                                                >
-                                                    {item.status}
-                                                </span>
-
-                                            </td>
-
-                                            <td>
-
-                                                <button className="detail-button">
-                                                    View Detail
-                                                </button>
-
-                                            </td>
-
-                                        </tr>
-
-                                    ))}
-
-                                </tbody>
-
-                            </table>
 
                         </div>
 
